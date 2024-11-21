@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <script language="javascript" src="js/validautente.js"></script>
+    <script language="javascript" src="js/validautente.js"></script> <!-- Assicurati che il file esista -->
+    <script language="javascript" src="js/gestioneRistoranti.js"></script> <!-- Assicurati che il file esista -->
 </head>
 <body>
 <header>
-    <img src="images/logo.png" />
+    <img src="images/logo.png" alt="Logo"/>
     <h1>Ristoranti</h1>
     <nav>
         <ul>
@@ -18,18 +19,19 @@
     </nav>
 </header>
 
-<!-- Aggiungi l'evento onsubmit direttamente nel JavaScript -->
+<h2>Accedi al tuo account</h2>
+
+<!-- Form di login -->
 <form id="formSubmit" method="POST" action="doLogin">
     <div>
-        Username: <input type="text" id="user" name="username" />
+        Username: <input type="text" id="user" name="username" required/>
     </div>
     <div>
-        Password: <input type="password" name="password" />
+        Password: <input type="password" name="password" required/>
     </div>
     <div>
         <input type="submit" value="Login" />
     </div>
 </form>
-
 </body>
 </html>

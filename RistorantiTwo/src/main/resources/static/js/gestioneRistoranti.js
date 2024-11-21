@@ -1,6 +1,13 @@
-window.addEventListener("load", function () {
-    var btn_aggiungi = document.querySelector("#btn_aggiungi"); // Seleziona il bottone per l'aggiunta
-    btn_aggiungi.addEventListener("click", aggiungiRistorante); // Assegna il click handler
+window.addEventListener("DOMContentLoaded", function () {
+    var btn_aggiungi = document.querySelector("#btn_aggiungi");
+    if (btn_aggiungi) {
+        btn_aggiungi.addEventListener("click", function () {
+            console.log("Bottone cliccato!");
+            aggiungiRistorante();
+        });
+    } else {
+        console.error("Bottone #btn_aggiungi non trovato.");
+    }
 });
 
 function aggiungiRistorante() {
@@ -26,7 +33,7 @@ function aggiungiRistorante() {
 
     // Chiamata AJAX con metodo POST per aggiungere il ristorante
     $.ajax({
-        url: "/ristorante/addRistorante",  // Assicurati che il percorso sia corretto (modifica se necessario)
+        url: "/addRistorante",  // Assicurati che il percorso sia corretto (modifica se necessario)
         type: "POST",
         contentType: "application/json", // Indica che i dati sono in formato JSON
         data: JSON.stringify(ristorante),  // Converti l'oggetto in una stringa JSON

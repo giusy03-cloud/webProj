@@ -5,28 +5,15 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
+        <version>3.3.5</version> <!-- Versione unificata di Spring Boot -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.dipartimento</groupId>
-    <artifactId>RistorantiTwo</artifactId>
+    <artifactId>RistorantiTwo</artifactId> <!-- Nome unificato del progetto -->
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging> <!-- Packaging unificato su JAR -->
     <name>RistorantiTwo</name>
     <description>RistorantiTwo</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -40,22 +27,35 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
-            <optional>true</optional>
+            <optional>true</optional> <!-- Uniformato con il secondo file -->
         </dependency>
+
+        <!-- Dipendenza di Tomcat, poiché il packaging è jar (embedded) -->
+        <!-- Questo potrebbe essere rimosso nel caso si preferisca un WAR -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <scope>provided</scope> <!-- Usato con WAR se preferisci un deployment esterno -->
         </dependency>
+
+        <!-- Dipendenza PostgreSQL con versione specificata -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version> <!-- Uniformato con il secondo file -->
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- Dipendenza per i test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -67,5 +67,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

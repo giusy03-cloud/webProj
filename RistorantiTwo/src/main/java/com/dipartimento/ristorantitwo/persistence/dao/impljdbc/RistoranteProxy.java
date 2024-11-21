@@ -10,10 +10,19 @@ import lombok.Setter;
 
 import java.util.List;
 
+//implementa il pattern Proxy per gestire l'accesso alla lista dei
+//piatti associati a un ristorante
 
 public class RistoranteProxy extends Ristorante {
 
+    //il pattern proxy è utilizzato per controllare l'accesso a un oggetto
+    //solitamente per gestire la sua creazione o per ritardare il caricamento dei dati pesanti
+    //come in questo caso i piatti di un ristorante
 
+    //estende Ristorante quindi eredita tutti i metodi e le proprietà
+
+
+    //questo metodo restituisce la lista dei piatti associati a un ristorante
     public List<Piatto> getPiatti() {
         if(this.piatti==null){
             this.piatti= DBManager.getInstance().getPiattoDao().findAllByRistoranteName(this.nome);

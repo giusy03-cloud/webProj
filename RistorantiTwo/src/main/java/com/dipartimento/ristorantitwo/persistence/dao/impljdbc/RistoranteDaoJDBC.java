@@ -19,6 +19,8 @@ public class RistoranteDaoJDBC implements RistoranteDao {
         this.connection = conn;
     }
 
+    //Esegue le query SQL per recuperare tutti i ristoranti, trovare un ristorante per nome, salvare un ristorante e gestire la relazione tra
+    // ristoranti e piatti nella tabella di join ristorante_piatto.
 
     @Override
     public List<Ristorante> findAll() {

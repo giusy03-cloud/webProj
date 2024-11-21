@@ -1,34 +1,18 @@
 package com.dipartimento.ristorantitwo.controller;
 
 import com.dipartimento.ristorantitwo.model.Ristorante;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ristorante")  // Aggiungi un path base per gli endpoint legati ai ristoranti
 public class GestioneRistorante {
 
-    // Lista temporanea per memorizzare i ristoranti
-    private List<Ristorante> ristoranti = new ArrayList<>();
-
-    // Endpoint per visualizzare tutti i ristoranti
-    @GetMapping("/elenco")
-    public List<Ristorante> elencoRistoranti() {
-        return ristoranti;
-    }
-
-    // Endpoint per aggiungere un ristorante
-    @PostMapping("/addRistorante")
+    @PostMapping("/addRistorante")  // Cambia @GetMapping in @PostMapping
     public String aggiungiRistorante(@RequestBody Ristorante ristorante) {
-        // Aggiungi il ristorante alla lista
-        ristoranti.add(ristorante);
-
-        // Stampa il nome del ristorante per il debug
-        System.out.println("Ristorante aggiunto: " + ristorante.getNome());
-
-        // Restituisci una risposta
-        return "Ristorante aggiunto con successo: " + ristorante.getNome();
+        System.out.println("ristorante: " + ristorante.getNome());
+        return "Ristorante aggiunto con successo!";
     }
 }
+

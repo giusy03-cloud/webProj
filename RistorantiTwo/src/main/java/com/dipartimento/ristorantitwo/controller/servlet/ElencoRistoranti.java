@@ -13,6 +13,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+//questa classe SERVLET gestisce la richiesta HTTP GET al percorso /ristoranti
+
+
 @WebServlet("/ristoranti")
 public class ElencoRistoranti extends HttpServlet {
     @Override
@@ -24,6 +27,8 @@ public class ElencoRistoranti extends HttpServlet {
         String username = (String) req.getSession(true).getAttribute("username");
         System.out.println("username: " + username);
         if (username != null) {
+            //se un utente è autenticato, la servlet crea una lista di oggetti Ristorante
+            //e la inoltra alla pagina HTML(elenco_ristoranti.html) utilizzando un requestDispatcher
             //Ho fatto la query
             List<Ristorante> ristoranti = new ArrayList<Ristorante>();
             Ristorante r1 = new Ristorante();
@@ -40,10 +45,11 @@ public class ElencoRistoranti extends HttpServlet {
 
             req.setAttribute("ristoranti", ristoranti);
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("views/elenco_ristoranti.html");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("templates/elenco_ristoranti.html");
             dispatcher.forward(req, resp);
         }else{
-            RequestDispatcher dispatcher = req.getRequestDispatcher("views/notAuthorized.html");
+            //se invece non è autenticatp, viene reindirizzato alla pafina notAuthorized.html
+            RequestDispatcher dispatcher = req.getRequestDispatcher("templates/notAuthorized.html");
             dispatcher.forward(req, resp);
         }
 
