@@ -85,7 +85,7 @@ public class RistoranteDaoJDBC implements RistoranteDao {
             statement.setString(3, ristorante.getUbicazione());
             statement.executeUpdate();
 
-            List<Piatto> piatti = ristorante.getPiatti();
+            List<Piatto> piatti = (List<Piatto>) ristorante.getPiatti();
             if(piatti==null || piatti.isEmpty()){
                 return;
             }

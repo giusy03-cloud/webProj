@@ -1,47 +1,147 @@
 package com.dipartimento.ristorantitwo.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity
 public class Piatto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Generazione automatica dell'ID
+    private Long id;
 
     private String nome;
     private String ingredienti;
 
-    // Costruttore senza argomenti (equivalente a @NoArgsConstructor)
-    public Piatto() {
+    public Piatto(String nome, String ingredienti){
+        this.nome=nome;
+        this.ingredienti=ingredienti;
+
     }
 
-    // Costruttore con tutti i campi (equivalente a @AllArgsConstructor)
-    public Piatto(String nome, String ingredienti) {
-        this.nome = nome;
-        this.ingredienti = ingredienti;
-    }
+    @ManyToMany(mappedBy = "piatti", fetch = FetchType.LAZY) // Relazione inversa con Ristorante
+    private List<Ristorante> ristoranti = new List<Ristorante>() {
+        @Override
+        public int size() {
+            return 0;
+        }
 
-    // Getter per 'nome'
-    public String getNome() {
-        return nome;
-    }
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
 
-    // Setter per 'nome'
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+        @Override
+        public boolean contains(Object o) {
+            return false;
+        }
 
-    // Getter per 'ingredienti'
-    public String getIngredienti() {
-        return ingredienti;
-    }
+        @Override
+        public Iterator<Ristorante> iterator() {
+            return null;
+        }
 
-    // Setter per 'ingredienti'
-    public void setIngredienti(String ingredienti) {
-        this.ingredienti = ingredienti;
-    }
+        @Override
+        public Object[] toArray() {
+            return new Object[0];
+        }
 
-    // Metodo toString per la rappresentazione della classe
-    @Override
-    public String toString() {
-        return "Piatto{" +
-                "nome='" + nome + '\'' +
-                ", ingredienti='" + ingredienti + '\'' +
-                '}';
-    }
+        @Override
+        public <T> T[] toArray(T[] a) {
+            return null;
+        }
+
+        @Override
+        public boolean add(Ristorante ristorante) {
+            return false;
+        }
+
+        @Override
+        public boolean remove(Object o) {
+            return false;
+        }
+
+        @Override
+        public boolean containsAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public boolean addAll(Collection<? extends Ristorante> c) {
+            return false;
+        }
+
+        @Override
+        public boolean addAll(int index, Collection<? extends Ristorante> c) {
+            return false;
+        }
+
+        @Override
+        public boolean removeAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public boolean retainAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        public Ristorante get(int index) {
+            return null;
+        }
+
+        @Override
+        public Ristorante set(int index, Ristorante element) {
+            return null;
+        }
+
+        @Override
+        public void add(int index, Ristorante element) {
+
+        }
+
+        @Override
+        public Ristorante remove(int index) {
+            return null;
+        }
+
+        @Override
+        public int indexOf(Object o) {
+            return 0;
+        }
+
+        @Override
+        public int lastIndexOf(Object o) {
+            return 0;
+        }
+
+        @Override
+        public ListIterator<Ristorante> listIterator() {
+            return null;
+        }
+
+        @Override
+        public ListIterator<Ristorante> listIterator(int index) {
+            return null;
+        }
+
+        @Override
+        public List<Ristorante> subList(int fromIndex, int toIndex) {
+            return List.of();
+        }
+    }; // Inizializzazione per evitare null pointer
 
 }

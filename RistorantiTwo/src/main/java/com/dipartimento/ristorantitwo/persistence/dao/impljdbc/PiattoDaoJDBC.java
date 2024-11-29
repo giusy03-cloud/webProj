@@ -1,14 +1,14 @@
 package com.dipartimento.ristorantitwo.persistence.dao.impljdbc;
 
 import com.dipartimento.ristorantitwo.model.Piatto;
-import com.dipartimento.ristorantitwo.model.Ristorante;
 import com.dipartimento.ristorantitwo.persistence.DBManager;
 import com.dipartimento.ristorantitwo.persistence.dao.PiattoDao;
-import com.dipartimento.ristorantitwo.persistence.dao.RistoranteDao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 //implementazione concerata di piattoDAO
 
